@@ -5,30 +5,25 @@ I recently upgraded an ESXi VM appliance from Ubuntu 14.x/gns3 2.2.7 to the newe
 
 I used this on two instances with success.
 
-Backup:
-# cd/opt provides a common storage volume with adequate storage space
+# Backup
+cd/opt - provides a common storage volume with adequate storage space
 
-cd/opt
-#backup vm server projects and images
-
+#Backup vm server projects and images
 sudo tar -zcvf opt-gns3-2_7.tar /opt/gns3
-#backup symbols and appliances in gns3 server folders
 
+#Backup symbols and appliances in gns3 server folders
 sudo tar -zcvf gns3-home2_7.tar /home/gns3
+
 #use ftp client on vm to (binary) put/upload .tar files to shared storage
 
-Restore:
-# restore the two .tar files to original folders on new ESXi vm server after installing an ftp client on this 2.2.7 vm
-
-# use ftp client to get .tar files from storage and (binary) put into /opt on new gns3 VM 
-
-# cd/ establishes the root folder for restore overlay
-
+# Restore:
+restore the two .tar files to original folders on new ESXi vm server after installing an ftp client on this 2.2.7 vm
+use ftp client to get .tar files from storage and (binary) put into /opt on new gns3 VM 
+cd/ establishes the root folder for restore overlay
 cd/
 #restore vm server projects and images
-
 sudo tar -zxvf /opt/opt-gns3-2_7.tar
-#restore symbols and appliances in gns3 server folders
 
+#restore symbols and appliances in gns3 server folders
 sudo tar -zxvf /opt/gns3-home2_7.tar
 #reboot vm and connect the GNS3 2.7 client to new ESXi vm
