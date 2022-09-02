@@ -49,11 +49,11 @@ from bgp to ospf redistribution from SPWAN-1
 Show cry isa sa
 show cry ips as
 debug cry ipsec 255
-*look for MM_Active 
-*Must start NX9K firest, wait for boot followed by the CSR1K's
+* Look for MM_Active 
+* Must start NX9K firest, wait for boot followed by the CSR1K's
 Start PAN after 1K's wait 15mi.
 Start the other applainces one at a time
-May require 30m to boot lab
+* May require 30m to boot lab
 ```
 ## PAN 
 - Wait for boot at least 5 minutes
@@ -76,7 +76,7 @@ to 224 IDs theoretically giving us 16,777,216 segments. (Valid VNI values are fr
 - Network Virtualization Endpoint or Network Virtualization Edge (NVE): overlay interface configured in Cisco devices to define a VTEP
 
 # Usefull Show Commands
-- List 
+```
   show run | i ip pim|interface
   show ip igmp interface
   show ip multicast
@@ -86,29 +86,29 @@ to 224 IDs theoretically giving us 16,777,216 segments. (Valid VNI values are fr
   show ip access-list GROUP1-MCAST
   show nve interface nve 1 detail
   show ip mroute
-
+```
 ## notes 
-'''
+```
 power on/off vteps manually
 may need to power cycle dr leaf switches to get mcast working.
 ## mcast testing
-'''
+```
 #DR-vtep1
 int lo0
  ip igmp join-group 239.0.0.4
-'''
+```
 ## Run From vtep1###
-'''
+```
 ping 239.0.0.4 
 remove "ip igmp join-group 239.0.0.4"
-'''
+```
 
 ## External Switch Information
-'''
+```
 * dont use VMNet1 it has high cpu. It may help to change the ubridege.exe priority to low in task manager detailed settings.
-'''
+```
 ## Add these vlans after a switch reboot
-'''
+```
 add vlans 192,193 to VXL-GW1 & 2 after reboot.
 conf t
 vlan 168
@@ -117,8 +117,8 @@ vlan 193
 end
 wr
 '''
-## Run the following appliance is powered on
-'''
+## To fix a bug run the following when the appliance is powered on
+```
 !IOU1
 conf t
 no spanning-tree vlan 168
@@ -135,5 +135,5 @@ int e1/0
  switchport host
 end
 wr
-'''
+```
 # End of Lab 2 Notes
