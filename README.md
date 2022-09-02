@@ -46,7 +46,7 @@ address-family ipv4
 Show cry isa sa
 show cry ips as
 debug cry ipsec 255
-* Look for MM_Active 
+# Look for MM_Active 
 ```
 ### Appliance Notes
 * Must start NX9K firest, wait for boot followed by the CSR1K's
@@ -70,20 +70,20 @@ Webconsole-persistent select live-usb at boot screen
 - Network Virtualization Endpoint or Network Virtualization Edge (NVE): overlay interface configured in Cisco devices to define a VTEP
 # Usefull Show Commands
 ```
-  show run | i ip pim|interface
-  show ip igmp interface
-  show ip multicast
-  show ip multicast interface
-*look for joined mcast group per int.
-  show bridge-domain 1
-  show ip access-list GROUP1-MCAST
-  show nve interface nve 1 detail
-  show ip mroute
+show run | i ip pim|interface
+show ip igmp interface
+show ip multicast
+show ip multicast interface
+# Look for joined mcast group per int.
+show bridge-domain 1
+show ip access-list GROUP1-MCAST
+show nve interface nve 1 detail
+show ip mroute
 ```
 ## notes 
 ```
 power on/off vteps manually
-may need to power cycle dr leaf switches to get mcast working.
+may need to power cycle dr leaf switches to restore mcast process.
 ```
 ## mcast testing
 ```
@@ -97,12 +97,10 @@ ping 239.0.0.4
 remove "ip igmp join-group 239.0.0.4"
 ```
 ## External Switch Information
-```
 * dont use VMNet1 it has high cpu. It may help to change the ubridege.exe priority to low in task manager detailed settings.
-```
 ## Add these vlans after a switch reboot
 ```
-add vlans 192,193 to VXL-GW1 & 2 after reboot.
+# add vlans 192,193 to VXL-GW1 & 2 after reboot. This is a bug.
 conf t
 vlan 168
 vlan 192
@@ -112,7 +110,7 @@ wr
 ```
 ## To fix a bug run the following when the appliance is powered on
 ```
-!IOU1
+#IOU1
 conf t
 no spanning-tree vlan 168
 int e0/0
