@@ -1,4 +1,4 @@
-# The following Procedure is a GNS3 Appliance Upgrade from Ubuntu 14.x to 18.x for Migrating Appliances and Projects 
+# The following is a Procedure for Upgrading is a GNS3 Appliance from Ubuntu 14.x to 18.x and Migrating the Appliances and Projects 
 - Upgraded an ESXi VM appliance from Ubuntu 14.x/gns3 2.2.7 to the newer Ubuntu 18.04/gns3 2.2.7 and newer VM. I verfied this procedure worked for migrating all appliances and projects for the old vm to the new ESXi VM. 
 - This procedure may not work for VM for Workstation/Fusion since project configuration files are stored on the client storage and not the server.
 - Reference - **[Link to GNS3 Post (HTML format)](https://gns3.com/upgrade-ubuntu-14-x-gns3-2-2-7-t)
@@ -24,7 +24,7 @@ sudo tar -zxvf /opt/opt-gns3-2_7.tar
 sudo tar -zxvf /opt/gns3-home2_7.tar
 # reboot vm and connect the GNS3 2.7 client to new ESXi vm
 ```
-## End-of-Procedure
+# End-of-Procedure
 
 # GSN3 LAB NOTES
 ## Operational Notes and Information for GSN3 Simulation Lab 1 
@@ -61,7 +61,7 @@ delete deviceconfig system type dhcp-client"
 set deviceconfig system ip-address 192.168.1.2 netmask 255.255.255.0
 Webconsole-persistent select live-usb at boot screen
 ```
-# End of Lab 1 Notes
+# End-of-Lab 1
 
 # Operational Notes and Information for GSN3 Simulation Lab 2 
 - Reference - **[Link to Cisco_VXLAN_APIC-EM_Stealthwatch_Prime-Infrastructure_Networking-Lab.pdf (HTML format)](https://github.com/garrygl/GNS3/blob/20b25805cb25cc5977216e78a9a4a0c04696f3e3/Cisco_VXLAN_APIC-EM_Stealthwatch_Prime-Infrastructure_Networking-Lab.pdf)
@@ -127,4 +127,4 @@ int e1/0
 end
 wr
 ```
-# End of Lab 2 Notes
+# End-of-Lab 2
