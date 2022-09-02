@@ -1,31 +1,28 @@
-# The following Procedure is a GNS3 Appliance Upgrade (from Ubuntu 14.x to 18.x) that will Migrate Projects 
+# The following Procedure is a GNS3 Appliance Upgrade from Ubuntu 14.x to 18.x for Migrating Appliances and Projects 
 - Upgraded an ESXi VM appliance from Ubuntu 14.x/gns3 2.2.7 to the newer Ubuntu 18.04/gns3 2.2.7 and newer VM. I verfied this procedure worked for migrating all appliances and projects for the old vm to the new ESXi VM. 
-
 - This procedure may not work for VM for Workstation/Fusion since project configuration files are stored on the client storage and not the server.
-
 - Reference - **[Link to GNS3 Post (HTML format)](https://gns3.com/upgrade-ubuntu-14-x-gns3-2-2-7-t)
 
 ## Backup GNS3 Content
 
-- cd/opt - provides a common storage volume with adequate storage space
-- #Backup vm server projects and images
-- sudo tar -zcvf opt-gns3-2_7.tar /opt/gns3
+1. cd/opt - provides a common storage volume with adequate storage space
+2. Backup vm server projects and images
+    sudo tar -zcvf opt-gns3-2_7.tar /opt/gns3
 
-- #Backup symbols and appliances in gns3 server folders
-- sudo tar -zcvf gns3-home2_7.tar /home/gns3
-- use ftp client on vm to (binary) put/upload .tar files to shared storage
+- Backup symbols and appliances in gns3 server folders
+1. sudo tar -zcvf gns3-home2_7.tar /home/gns3
+2. use ftp client on vm to (binary) put/upload .tar files to shared storage
 
 ## Restore GSN3 Content
 - Restore the two .tar files to original folders on new ESXi vm server after installing an ftp client on this 2.2.7 vm
-- Use ftp client to get .tar files from storage and (binary) put into /opt on new gns3 VM 
-- cd/ establishes the root folder for restore overlay
+1. Use ftp client to get .tar files from storage and (binary) put into /opt on new gns3 VM 
+2. cd/ establishes the root folder for restore overlay
 
-_ #Restore vm server projects and images
-- sudo tar -zxvf /opt/opt-gns3-2_7.tar
-
-- #restore symbols and appliances in gns3 server folders
-- sudo tar -zxvf /opt/gns3-home2_7.tar
-- reboot vm and connect the GNS3 2.7 client to new ESXi vm
+## Restore vm server projects and images
+1. sudo tar -zxvf /opt/opt-gns3-2_7.tar
+2. restore symbols and appliances in gns3 server folders
+    sudo tar -zxvf /opt/gns3-home2_7.tar
+    reboot vm and connect the GNS3 2.7 client to new ESXi vm
 # End of Procedure
 
 ## GSN3 LAB NOTES
@@ -48,9 +45,8 @@ from bgp to ospf redistribution from SPWAN-1
 - address-family ipv4
   bgp redistribute-internal
 ## PAN Policy
-PAN Poilcy Based forwarding rule to Azure Cohesity
-PAN 10.30.0.0/19 is static and only inserted if tunnel peer is
-operational. ExpressRoute is prefered over vWAN VPN
+- PAN Poilcy Based forwarding rule to Azure Cohesity
+  PAN 10.30.0.0/19 is static and only inserted if tunnel peer is operational. ExpressRoute is prefered over vWAN VPN
 
 Show cry isa sa
 show cry ips as
@@ -83,17 +79,17 @@ to 224 IDs theoretically giving us 16,777,216 segments. (Valid VNI values are fr
 - Network Virtualization Endpoint or Network Virtualization Edge (NVE): overlay interface configured in Cisco devices to define a VTEP
 
 # Usefull Show Commands
-''' 
-show run | i ip pim|interface
-show ip igmp interface
-show ip multicast
-show ip multicast interface
- *look for joined mcast group per int.
-show bridge-domain 1
-show ip access-list GROUP1-MCAST
-show nve interface nve 1 detail
-show ip mroute
-'''
+- List 
+  show run | i ip pim|interface
+  show ip igmp interface
+  show ip multicast
+  show ip multicast interface
+*look for joined mcast group per int.
+  show bridge-domain 1
+  show ip access-list GROUP1-MCAST
+  show nve interface nve 1 detail
+  show ip mroute
+
 ## notes 
 '''
 power on/off vteps manually
