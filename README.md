@@ -19,8 +19,8 @@
 ## Restore vm server projects and images
 1. sudo tar -zxvf /opt/opt-gns3-2_7.tar
 2. restore symbols and appliances in gns3 server folders
-    sudo tar -zxvf /opt/gns3-home2_7.tar
-    reboot vm and connect the GNS3 2.7 client to new ESXi vm
+  sudo tar -zxvf /opt/gns3-home2_7.tar
+  reboot vm and connect the GNS3 2.7 client to new ESXi vm
 # End of Procedure
 
 ## GSN3 LAB NOTES
