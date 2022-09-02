@@ -45,16 +45,16 @@ from bgp to ospf redistribution from SPWAN-1
 ## PAN Policy
 - PAN Poilcy Based forwarding rule to Azure Cohesity
   PAN 10.30.0.0/19 is static and only inserted if tunnel peer is operational. ExpressRoute is prefered over vWAN VPN
-
-* Show cry isa sa
-* show cry ips as
-* debug cry ipsec 255
-* look for MM_Active 
-* Must start NX9K firest, wait for boot followed by the CSR1K's
-* Start PAN after 1K's wait 15mi.
-* Start others one at a time
-* My require 30m to boot lab
-
+```
+Show cry isa sa
+show cry ips as
+debug cry ipsec 255
+*look for MM_Active 
+*Must start NX9K firest, wait for boot followed by the CSR1K's
+Start PAN after 1K's wait 15mi.
+Start the other applainces one at a time
+May require 30m to boot lab
+```
 ## PAN 
 - Wait for boot at least 5 minutes
 for new cofigs on pan run "delete deviceconfig system type dhcp-client"
