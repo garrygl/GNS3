@@ -1,5 +1,5 @@
-# The following is a GNS3 Appliance Upgrade Procedure from Ubuntu 14.x to 18.x
-- Upgraded an ESXi VM appliance from Ubuntu 14.x/gns3 2.2.7 to the newer Ubuntu 18.04/gns3 2.2.7 VM and found this procedure worked for migrating all appliances and projects for the old vm to the new ESXi VM:  I do not have a specific question other than if this is not recomened. 
+# The following Procedure is a GNS3 Appliance Upgrade (from Ubuntu 14.x to 18.x) that will Migrate Projects 
+- Upgraded an ESXi VM appliance from Ubuntu 14.x/gns3 2.2.7 to the newer Ubuntu 18.04/gns3 2.2.7 and newer VM. I verfied this procedure worked for migrating all appliances and projects for the old vm to the new ESXi VM. 
 
 - This procedure may not work for VM for Workstation/Fusion since project configuration files are stored on the client storage and not the server.
 
@@ -74,17 +74,16 @@ Webconsole-persistent select live-usb at boot screen
 - Reference - **[Link to Cisco_VXLAN_APIC-EM_Stealthwatch_Prime-Infrastructure_Networking-Lab.pdf (HTML format)](https://github.com/garrygl/GNS3/blob/20b25805cb25cc5977216e78a9a4a0c04696f3e3/Cisco_VXLAN_APIC-EM_Stealthwatch_Prime-Infrastructure_Networking-Lab.pdf)
 
 
-(1) VXLAN Tunnel Endpoint (VTEP): Map tenants’ end devices to VXLAN 
-      segments. Used to perform VXLAN encapsulation/de-encapsulation.
-(2) Virtual Network Identifier (VNI): identify a VXLAN segment. It hast up
-       to 224 IDs theoretically giving us 16,777,216 segments. (Valid VNI 
-       values are from 4096 to 16777215). Each segment can transport 
-       802.1q-encapsulated packets, theoretically giving us 212 or 4096 VLANs 
-       over a single VNI.
-(3) Network Virtualization Endpoint or Network Virtualization Edge (NVE): 
-      overlay interface configured in Cisco devices to define a VTEP
+- VXLAN Tunnel Endpoint (VTEP): Map tenants’ end devices to VXLAN 
+  segments. Used to perform VXLAN encapsulation/de-encapsulation.
+- Virtual Network Identifier (VNI): identify a VXLAN segment. It hast up
+to 224 IDs theoretically giving us 16,777,216 segments. (Valid VNI values are from 4096 to 16777215). Each segment can transport 
+802.1q-encapsulated packets, theoretically giving us 212 or 4096 VLANs over a single VNI.
 
+- Network Virtualization Endpoint or Network Virtualization Edge (NVE): overlay interface configured in Cisco devices to define a VTEP
 
+# Usefull Show Commands
+''' 
 show run | i ip pim|interface
 show ip igmp interface
 show ip multicast
@@ -94,38 +93,39 @@ show bridge-domain 1
 show ip access-list GROUP1-MCAST
 show nve interface nve 1 detail
 show ip mroute
-**notes 
-* power on/off vteps manually
-* may need to power cycle dr leaf 
-   switches to get mcast working.
-##mcast testing##
+'''
+## notes 
+'''
+power on/off vteps manually
+may need to power cycle dr leaf switches to get mcast working.
+## mcast testing
+'''
 #DR-vtep1
 int lo0
  ip igmp join-group 239.0.0.4
-### From vtep1###
+'''
+## Run From vtep1###
+'''
 ping 239.0.0.4 
 remove "ip igmp join-group 239.0.0.4"
-####
+'''
 
-
-# External Switch Information
-dont use VMNet1 it has high cpu. 
-it may help to change the 
-ubridege.exe priority to 
-low in task manager detailed 
-settings.
-
-! add vlans 192,193
-! to VXL-GW1 & 2 
-! after reboot.
+## External Switch Information
+'''
+* dont use VMNet1 it has high cpu. It may help to change the ubridege.exe priority to low in task manager detailed settings.
+'''
+## Add these vlans after a switch reboot
+'''
+add vlans 192,193 to VXL-GW1 & 2 after reboot.
 conf t
 vlan 168
 vlan 192
 vlan 193
 end
 wr
-
-# Run the following appliance is powered on
+'''
+## Run the following appliance is powered on
+'''
 !IOU1
 conf t
 no spanning-tree vlan 168
@@ -142,4 +142,5 @@ int e1/0
  switchport host
 end
 wr
-# End of Lab 1 Notes
+'''
+# End of Lab 2 Notes
