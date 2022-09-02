@@ -3,18 +3,16 @@
 - This procedure may not work for VM for Workstation/Fusion since project configuration files are stored on the client storage and not the server.
 - Reference - **[Link to GNS3 Post (HTML format)](https://gns3.com/upgrade-ubuntu-14-x-gns3-2-2-7-t)
 
-## Backup GNS3 Content
-
+## Backup GNS3 Projects and Appliances and Other Content
 1. cd/opt - provides a common storage volume with adequate storage space
 2. Backup vm server projects and images
     sudo tar -zcvf opt-gns3-2_7.tar /opt/gns3
-
-- Backup symbols and appliances in gns3 server folders
+### Backup symbols and appliances in gns3 server folders
 1. sudo tar -zcvf gns3-home2_7.tar /home/gns3
 2. use ftp client on vm to (binary) put/upload .tar files to shared storage
 
 ## Restore GSN3 Content
-- Restore the two .tar files to original folders on new ESXi vm server after installing an ftp client on this 2.2.7 vm
+### Restore the two .tar files to original folders on new ESXi vm server after installing an ftp client on this 2.2.7 vm
 1. Use ftp client to get .tar files from storage and (binary) put into /opt on new gns3 VM 
 2. cd/ establishes the root folder for restore overlay
 
