@@ -1,10 +1,13 @@
-# The following is a Procedure for Upgrading a GNS3 Appliance from Ubuntu 14.x to 18.x and Migrating the Appliances and Projects 
-- Upgraded an ESXi VM appliance from Ubuntu 14.x/gns3 2.2.7 to the newer Ubuntu 18.04/gns3 2.2.7 and newer VM. I verfied this procedure worked for migrating all appliances and projects for the old vm to the new ESXi VM. 
-- This procedure may not work for VM for Workstation/Fusion since project configuration files are stored on the client storage and not the server.
-- Reference - **[Link to GNS3 Post (HTML format)](https://gns3.com/upgrade-ubuntu-14-x-gns3-2-2-7-t)
+# This Document Contains Information for the Ugrading GNS3 Appliance and GSN3 Lab Projects
+
+## Procedure for Upgrading a a GNS3 Appliance 
+
+Abstract: This following procedure is for upgrading an ESXi GNS3 VM appliance from Ubuntu 14.x/gns3 2.2.7 to the newer Ubuntu 18.04/gns3 2.2.7 and newer VM. I verfied this procedure worked for migrating all appliances and projects for the old vm to the new ESXi VM. 
+This procedure may not work for VM for Workstation/Fusion since project configuration files are stored on the client storage and not the server.
+Reference - **[Link to GNS3 Post (HTML format)](https://gns3.com/upgrade-ubuntu-14-x-gns3-2-2-7-t)
 
 ## Backup GNS3 Projects and Appliances
-```
+```bash
 cd/opt - provides a common storage volume with adequate storage space
 # Backup vm server projects and images
 sudo tar -zcvf opt-gns3-2_7.tar /opt/gns3
@@ -18,7 +21,7 @@ sudo tar -zcvf gns3-home2_7.tar /home/gns3
 2. cd/ establishes the root folder for restore overlay
 
 ## Restore VM and Images
-```
+```bash
 sudo tar -zxvf /opt/opt-gns3-2_7.tar
 # Retore symbols and appliances in gns3 server folders
 sudo tar -zxvf /opt/gns3-home2_7.tar
@@ -35,14 +38,14 @@ sudo tar -zxvf /opt/gns3-home2_7.tar
 - The static 10.30.0.0/19 on the PAN is inserted into the routing table if the vWAN peer is reachable. 
 - The more specific /24 routes from the equinix peer are inserted into ospf type2 from bgp to ospf redistribution from WAN-1
 ### BGP Redistribute Command
-```
+```bash
 address-family ipv4
   bgp redistribute-internal
 ```
 ## PAN Routing Policy
 - PAN Poilcy Based forwarding rule to Azure Cohesity
 - PAN 10.30.0.0/19 is static and only inserted if tunnel peer is operational. ExpressRoute is prefered over vWAN VPN
-```
+```bash
 Show cry isa sa
 show cry ips as
 debug cry ipsec 255
@@ -69,7 +72,7 @@ Webconsole-persistent select live-usb at boot screen
 - Virtual Network Identifier (VNI): identify a VXLAN segment. It hast up to 224 IDs theoretically giving us 16,777,216 segments. (Valid VNI values are from 4096 to 16777215). Each segment can transport 802.1q-encapsulated packets, theoretically giving us 212 or 4096 VLANs over a single VNI.
 - Network Virtualization Endpoint or Network Virtualization Edge (NVE): overlay interface configured in Cisco devices to define a VTEP
 # Usefull Show Commands
-```
+```bash
 show run | i ip pim|interface
 show ip igmp interface
 show ip multicast
@@ -86,20 +89,20 @@ power on/off vteps manually
 may need to power cycle dr leaf switches to restore mcast process.
 ```
 ## mcast testing
-```
+```bash
 #DR-vtep1
 int lo0
  ip igmp join-group 239.0.0.4
 ```
 ## Run From vtep1###
-```
+```bash
 ping 239.0.0.4 
 remove "ip igmp join-group 239.0.0.4"
 ```
 ## External Switch Information
 * dont use VMNet1 it has high cpu. It may help to change the ubridege.exe priority to low in task manager detailed settings.
 ## Add these vlans after a switch reboot
-```
+```bash
 # add vlans 192,193 to VXL-GW1 & 2 after reboot. This is a bug.
 conf t
 vlan 168
@@ -109,7 +112,7 @@ end
 wr
 ```
 ## To fix a bug run the following when the appliance is powered on
-```
+```bash
 #IOU1
 conf t
 no spanning-tree vlan 168
