@@ -1,4 +1,4 @@
-# This Document Contains Information for the Ugrading GNS3 Appliance and GSN3 Lab Projects
+# The following Document Contains Information for Ugrading a GNS3 Appliance and Information on GSN3 Lab Projects
 
 ## Procedure for Upgrading a a GNS3 Appliance 
 
@@ -16,7 +16,8 @@ sudo tar -zcvf gns3-home2_7.tar /home/gns3
 # Use ftp client on vm to (binary) put/upload .tar files to shared storage
 ```
 ## Restore GSN3 Projects and Appliances
-### Restore the two .tar files to original folders on new ESXi vm server after installing an ftp client on this 2.2.7 vm
+
+Restore the two .tar files to original folders on new ESXi vm server after installing an ftp client on this 2.2.7 vm
 1. Use ftp client to get .tar files from storage and (binary) put into /opt on new gns3 VM 
 2. cd/ establishes the root folder for restore overlay
 
@@ -27,29 +28,35 @@ sudo tar -zxvf /opt/opt-gns3-2_7.tar
 sudo tar -zxvf /opt/gns3-home2_7.tar
 # reboot vm and connect the GNS3 2.7 client to new ESXi vm
 ```
-# End-of-Procedure
+## End-of-GNS3-Appliance-Upgrade-Procedure
 
-# GSN3 LAB NOTES
+# GSN3 Simulation Labs
+
+Abstract: This working lab simulates connecting on-premises networking to Azure ExpressRoute and an S2S VPN via a PAN firewall. It also connects AWS with a S2S VPN via the PAN firewall and a simulated Internet backbone. An external switch provides a bridge allowing a path to connect to the following: Cisco DNA-C appliance, Cisco APIC-EM, Stealwatach, Prime Infrastruture, and Cisco ISE. 
+
 ## Operational Notes GSN3 Simulation Lab 1 
 - Reference - **[Link to Network-Lab.pdf (HTML format)](https://github.com/garrygl/GNS3/blob/20b25805cb25cc5977216e78a9a4a0c04696f3e3/Network-Lab.pdf)
-- Webterm is a docker container and sometimse will not copy change the ip address to 192.168.1.10 - .2 is OOB PAN
-- Use bgp local pref to prefer CENIC over Comcast for Azure ExpressRoute if CENIC is not availble, prefer Comcast
-- OSPF Type 2 route redist into OSPF on WAN-1 to avoid having the metric change from link-to-link. ExpressRoute is prefered
-- The static 10.30.0.0/19 on the PAN is inserted into the routing table if the vWAN peer is reachable. 
-- The more specific /24 routes from the equinix peer are inserted into ospf type2 from bgp to ospf redistribution from WAN-1
+#### Azure routes are redistributed from BGP to OSPF and from OSFP to BGP using Type-2 link-state advertisements. 
+#### Webterm is a docker container and sometimse will not copy change the ip address to 192.168.1.10 - .2 is OOB PAN
+#### Use bgp local pref to prefer CENIC over Comcast for Azure ExpressRoute if CENIC is not availble, prefer Comcast
+#### OSPF Type 2 route redist into OSPF on WAN-1 to avoid having the metric change from link-to-link. ExpressRoute is prefered
+#### The static 10.30.0.0/19 on the PAN is inserted into the routing table if the vWAN peer is reachable. 
+#### The more specific /24 routes from the equinix peer are inserted into ospf type2 from bgp to ospf redistribution from WAN-1
 ### BGP Redistribute Command
 ```bash
 address-family ipv4
   bgp redistribute-internal
 ```
 ## PAN Routing Policy
-- PAN Poilcy Based forwarding rule to Azure Cohesity
-- PAN 10.30.0.0/19 is static and only inserted if tunnel peer is operational. ExpressRoute is prefered over vWAN VPN
 ```bash
 Show cry isa sa
 show cry ips as
 debug cry ipsec 255
 # Look for MM_Active 
+# PAN Poilcy Based forwarding rule to Azure Cohesity
+# PAN 10.30.0.0/19 is static and only inserted if tunnel peer is operational
+# ExpressRoute is prefered over vWAN VPN
+
 ```
 ### Appliance Notes
 * Must start NX9K firest, wait for boot followed by the CSR1K's
@@ -67,9 +74,13 @@ Webconsole-persistent select live-usb at boot screen
 # End-of-Lab 1
 
 # Operational Notes and Information for GSN3 Simulation Lab 2 
+
+Abstract: This lab simulates a working CLOS leaf-and-Spine VXLAN MCAST fabric using Cisco CSR1000v appliances as the spines. An external switch simalates a bridge connecting 
+
 - Reference - **[Link to Cisco_VXLAN_APIC-EM_Stealthwatch_Prime-Infrastructure_Networking-Lab.pdf (HTML format)](https://github.com/garrygl/GNS3/blob/20b25805cb25cc5977216e78a9a4a0c04696f3e3/Cisco_VXLAN_APIC-EM_Stealthwatch_Prime-Infrastructure_Networking-Lab.pdf)
 - VXLAN Tunnel Endpoint (VTEP): Map tenants’ end devices to VXLAN segments. Used to perform VXLAN encapsulation/de-encapsulation.
-- Virtual Network Identifier (VNI): identify a VXLAN segment. It hast up to 224 IDs theoretically giving us 16,777,216 segments. (Valid VNI values are from 4096 to 16777215). Each segment can transport 802.1q-encapsulated packets, theoretically giving us 212 or 4096 VLANs over a single VNI.
+- Virtual Network Identifier (VNI): identify a VXLAN segment. It can contain up to 224 IDs theoretically giving us 16,777,216 segments. (Valid VNI values are from 4096 to 16777215). 
+- Each segment can transport 802.1q-encapsulated packets, theoretically giving us 212 or 4096 VLANs over a single VNI.
 - Network Virtualization Endpoint or Network Virtualization Edge (NVE): overlay interface configured in Cisco devices to define a VTEP
 # Usefull Show Commands
 ```bash
