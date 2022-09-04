@@ -78,7 +78,7 @@ Webconsole-persistent select live-usb at boot screen
 ```
 # End-of-Lab 1
 
-## Lab 2 
+## Lab 2
 
 Abstract: This lab simulates a working CLOS leaf-and-Spine VXLAN MCAST fabric using Cisco CSR1000v appliances as the spines. An external switch simalates a bridge connecting 
 
