@@ -6,7 +6,7 @@
 * [Simulation Lab 1](#Simulation Lab 1 - Azure ExpressRoute)
 * [Simulation Lab 2](#Simulation Lab 2 - VXLAN & DNA-C)
 
-#Upgrading GNS3 Appliances 
+## Upgrading GNS3 Appliances 
 
 Abstract: This following outlines a prodecure for upgrading an ESXi GNS3 VM appliance from Ubuntu 14.x/gns3 2.2.7 to the newer Ubuntu 18.04/gns3 2.2.x VM. I verfied this procedure worked for migrating all appliances and projects for the old vm to the vm appliance. 
 This procedure may not work for a Workstation/Fusion VM since project configuration files are stored on client side storage and not on the server.
@@ -36,9 +36,9 @@ sudo tar -zxvf /opt/gns3-home2_7.tar
 ```
 ## End-of-GNS3-Appliance-Upgrade-Procedure
 
-# GNS3 Simulation Labs
+## GNS3 Simulation Labs
 
-# Simulation Lab 1
+## Simulation Lab 1
 
 Abstract: This working lab simulates connecting on-premises networking to Azure ExpressRoute and an S2S VPN via a PAN firewall. It also connects AWS with a S2S VPN via the PAN firewall and a simulated Internet backbone. An external switch running ubridege.exe provides the bridged path allowing a connection to the following external lab systems: Cisco DNA-C appliance, Cisco APIC-EM, Stealwatach, Prime Infrastruture, and Cisco ISE. 
 - Reference - **[Link to Network-Lab.pdf (HTML format)](https://github.com/garrygl/GNS3/blob/20b25805cb25cc5977216e78a9a4a0c04696f3e3/Network-Lab.pdf)
@@ -78,7 +78,7 @@ Webconsole-persistent select live-usb at boot screen
 ```
 # End-of-Lab 1
 
-# Simulation Lab 2 
+## Simulation Lab 2 
 
 Abstract: This lab simulates a working CLOS leaf-and-Spine VXLAN MCAST fabric using Cisco CSR1000v appliances as the spines. An external switch simalates a bridge connecting 
 
