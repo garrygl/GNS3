@@ -4,7 +4,7 @@
 * [Upgrading GNS3 Appliances](#Upgrading-GNS3-Appliances)
 * [GNS3 Simulation Labs](#GNS3-Simulation-Labs)
 * [Lab 1 Azure ExpressRoute with PAN S2S](#Lab-1-Azure-ExpressRoute-with-PAN-S2S)
-* [Lab 2](#Lab-2)
+* [Lab 2 VXLAN with External Bridge](#Lab-2-VXLAN-with-External-Bridge)
 
 ## Upgrading GNS3 Appliances 
 
@@ -78,7 +78,7 @@ Webconsole-persistent select live-usb at boot screen
 ```
 # End-of-Lab 1
 
-## Lab 2
+## Lab 2 VXLAN with External Bridge
 
 Abstract: This lab simulates a working CLOS leaf-and-Spine VXLAN MCAST fabric using Cisco CSR1000v appliances as the spines. An external switch simalates a bridge connecting 
 
