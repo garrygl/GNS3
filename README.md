@@ -103,18 +103,16 @@ may need to power cycle dr leaf switches to restore mcast process.
 ```
 ## MCAST Testing 
 ```bash
-#DR-vtep1
+# DR-vtep1
 int lo0
  ip igmp join-group 239.0.0.4
-```
-## Run From vtep1###
-```bash
+# Run From vtep1
 ping 239.0.0.4 
 remove "ip igmp join-group 239.0.0.4"
 ```
 ## External Switch Information
 * dont use VMNet1 it has high cpu. It may help to change the ubridege.exe priority to low in task manager detailed settings.
-## Add these vlans after a switch reboot
+## Bug: Fixes a Missing Config For Vlans After Switch Power On
 ```bash
 # add vlans 192,193 to VXL-GW1 & 2 after reboot. This is a bug.
 conf t
@@ -124,7 +122,7 @@ vlan 193
 end
 wr
 ```
-## Fixes a Missing Config Bug on IOU1 After a Power On
+## Bug: Fixes a Missing Config on IOU1 After a Power On
 ```bash
 #IOU1
 conf t
