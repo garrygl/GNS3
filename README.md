@@ -49,14 +49,13 @@ address-family ipv4
 ```
 ## PAN Routing Policy
 ```bash
-Show cry isa sa
-show cry ips as
-debug cry ipsec 255
 # Look for MM_Active 
 # PAN Poilcy Based forwarding rule to Azure Cohesity
 # PAN 10.30.0.0/19 is static and only inserted if tunnel peer is operational
 # ExpressRoute is prefered over vWAN VPN
-
+Show cry isa sa
+show cry ips as
+debug cry ipsec 255
 ```
 ### Appliance Notes
 * Must start NX9K firest, wait for boot followed by the CSR1K's
@@ -84,11 +83,12 @@ Abstract: This lab simulates a working CLOS leaf-and-Spine VXLAN MCAST fabric us
 - Network Virtualization Endpoint or Network Virtualization Edge (NVE): overlay interface configured in Cisco devices to define a VTEP
 # Useful Show Commands
 ```bash
+# Look for joined mcast group per interface
 show run | i ip pim|interface
 show ip igmp interface
 show ip multicast
 show ip multicast interface
-# Look for joined mcast group per int.
+# Look for nve per interface
 show bridge-domain 1
 show ip access-list GROUP1-MCAST
 show nve interface nve 1 detail
@@ -122,7 +122,7 @@ wr
 ```
 ## Bug: Fixes a Missing Config on IOU1 After a Power On
 ```bash
-#IOU1
+# IOU1
 conf t
 no spanning-tree vlan 168
 int e0/0
