@@ -2,8 +2,8 @@
 
 ## Procedure for Upgrading a a GNS3 Appliance 
 
-Abstract: This following procedure is for upgrading an ESXi GNS3 VM appliance from Ubuntu 14.x/gns3 2.2.7 to the newer Ubuntu 18.04/gns3 2.2.7 and newer VM. I verfied this procedure worked for migrating all appliances and projects for the old vm to the new ESXi VM. 
-This procedure may not work for VM for Workstation/Fusion since project configuration files are stored on the client storage and not the server.
+Abstract: This following outlines a prodecure for upgrading an ESXi GNS3 VM appliance from Ubuntu 14.x/gns3 2.2.7 to the newer Ubuntu 18.04/gns3 2.2.x VM. I verfied this procedure worked for migrating all appliances and projects for the old vm to the vm appliance. 
+This procedure may not work for a Workstation/Fusion VM since project configuration files are stored on client side storage and not on the server.
 Reference - **[Link to GNS3 Post (HTML format)](https://gns3.com/upgrade-ubuntu-14-x-gns3-2-2-7-t)
 
 ## Backup GNS3 Projects and Appliances
@@ -36,13 +36,15 @@ Abstract: This working lab simulates connecting on-premises networking to Azure 
 
 ## Operational Notes GSN3 Simulation Lab 1 
 - Reference - **[Link to Network-Lab.pdf (HTML format)](https://github.com/garrygl/GNS3/blob/20b25805cb25cc5977216e78a9a4a0c04696f3e3/Network-Lab.pdf)
-#### Azure routes are redistributed from BGP to OSPF and from OSFP to BGP using Type-2 link-state advertisements. 
-#### Webterm is a docker container and sometimse will not copy change the ip address to 192.168.1.10 - .2 is OOB PAN
-#### Use bgp local pref to prefer CENIC over Comcast for Azure ExpressRoute if CENIC is not availble, prefer Comcast
-#### OSPF Type 2 route redist into OSPF on WAN-1 to avoid having the metric change from link-to-link. ExpressRoute is prefered
-#### The static 10.30.0.0/19 on the PAN is inserted into the routing table if the vWAN peer is reachable. 
-#### The more specific /24 routes from the equinix peer are inserted into ospf type2 from bgp to ospf redistribution from WAN-1
-### BGP Redistribute Command
+* Azure routes are redistributed from BGP to OSPF and from OSFP to BGP using Type-2 link-state advertisements
+* Webterm is a docker container and sometimse will not copy change the ip address to 192.168.1.10 - .2 is OOB PAN
+* Use bgp local pref to prefer CENIC over Comcast for Azure ExpressRoute if CENIC is not availble, prefer Comcast
+* OSPF Type 2 route redist into OSPF on WAN-1 to avoid having the metric change from link-to-link. ExpressRoute is prefered
+* The static 10.30.0.0/19 on the PAN is inserted into the routing table if the vWAN peer is reachable 
+
+```bash
+# The more specific /24 routes from the equinix peer are inserted into ospf type2 from bgp to ospf redistribution from WAN-1
+# BGP Redistribute Command
 ```bash
 address-family ipv4
   bgp redistribute-internal
