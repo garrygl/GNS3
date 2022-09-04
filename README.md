@@ -1,10 +1,10 @@
 # This Document Contains Information for Ugrading GNS3 Appliances and Two Projects hosted on the GNS3 Platform
 
 ## Table of contents
-* [Upgrading GNS3 Appliances](#Upgrading GNS3 Appliances)
-* [GNS3 Simulation Labs](#GNS3 Simulation Labs)
-* [Simulation Lab 1](#Simulation Lab 1 - Azure ExpressRoute)
-* [Simulation Lab 2](#Simulation Lab 2 - VXLAN & DNA-C)
+* [Upgrading GNS3 Appliances](#Upgrading-GNS3-Appliances)
+* [GNS3 Simulation Labs](#GNS3-Simulation-Labs)
+* [Simulation Lab 1](#Simulation-Lab1-Azure ExpressRoute)
+* [Simulation Lab 2](#Simulation-Lab2-VXLAN-&-DNA-C)
 
 ## Upgrading GNS3 Appliances 
 
