@@ -32,7 +32,7 @@ sudo tar -zxvf /opt/gns3-home2_7.tar
 
 # GSN3 Simulation Labs
 
-Abstract: This working lab simulates connecting on-premises networking to Azure ExpressRoute and an S2S VPN via a PAN firewall. It also connects AWS with a S2S VPN via the PAN firewall and a simulated Internet backbone. An external switch provides a bridge allowing a path to connect to the following: Cisco DNA-C appliance, Cisco APIC-EM, Stealwatach, Prime Infrastruture, and Cisco ISE. 
+Abstract: This working lab simulates connecting on-premises networking to Azure ExpressRoute and an S2S VPN via a PAN firewall. It also connects AWS with a S2S VPN via the PAN firewall and a simulated Internet backbone. An external switch running ubridege.exe provides the bridged path allowing a connection to the following external lab systems: Cisco DNA-C appliance, Cisco APIC-EM, Stealwatach, Prime Infrastruture, and Cisco ISE. 
 
 ## Operational Notes GSN3 Simulation Lab 1 
 - Reference - **[Link to Network-Lab.pdf (HTML format)](https://github.com/garrygl/GNS3/blob/20b25805cb25cc5977216e78a9a4a0c04696f3e3/Network-Lab.pdf)
@@ -84,7 +84,7 @@ Abstract: This lab simulates a working CLOS leaf-and-Spine VXLAN MCAST fabric us
 - Virtual Network Identifier (VNI): identify a VXLAN segment. It can contain up to 224 IDs theoretically giving us 16,777,216 segments. (Valid VNI values are from 4096 to 16777215). 
 - Each segment can transport 802.1q-encapsulated packets, theoretically giving us 212 or 4096 VLANs over a single VNI.
 - Network Virtualization Endpoint or Network Virtualization Edge (NVE): overlay interface configured in Cisco devices to define a VTEP
-# Usefull Show Commands
+# Useful Show Commands
 ```bash
 show run | i ip pim|interface
 show ip igmp interface
@@ -96,12 +96,12 @@ show ip access-list GROUP1-MCAST
 show nve interface nve 1 detail
 show ip mroute
 ```
-## notes 
+## Operational Notes 
 ```
 power on/off vteps manually
 may need to power cycle dr leaf switches to restore mcast process.
 ```
-## mcast testing
+## MCAST Testing 
 ```bash
 #DR-vtep1
 int lo0
@@ -124,7 +124,7 @@ vlan 193
 end
 wr
 ```
-## To fix a bug run the following when the appliance is powered on
+## Fixes a Missing Config Bug on IOU1 After a Power On
 ```bash
 #IOU1
 conf t
@@ -143,4 +143,6 @@ int e1/0
 end
 wr
 ```
-# End-of-Lab 2
+## End-of-Lab 2
+# End-of-File
+
