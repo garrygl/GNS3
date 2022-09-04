@@ -41,11 +41,9 @@ Abstract: This working lab simulates connecting on-premises networking to Azure 
 * Use bgp local pref to prefer CENIC over Comcast for Azure ExpressRoute if CENIC is not availble, prefer Comcast
 * OSPF Type 2 route redist into OSPF on WAN-1 to avoid having the metric change from link-to-link. ExpressRoute is prefered
 * The static 10.30.0.0/19 on the PAN is inserted into the routing table if the vWAN peer is reachable 
-
 ```bash
 # The more specific /24 routes from the equinix peer are inserted into ospf type2 from bgp to ospf redistribution from WAN-1
 # BGP Redistribute Command
-```bash
 address-family ipv4
   bgp redistribute-internal
 ```
