@@ -3,7 +3,7 @@
 ## Table of contents
 * [Upgrading GNS3 Appliances](#Upgrading-GNS3-Appliances)
 * [GNS3 Simulation Labs](#GNS3-Simulation-Labs)
-* [Lab 1 - PAN Firewall S2S & Azure ExpressRoute](#Lab-1---PAN-Firewall-S2S-&-Azure-ExpressRoute)
+* [Lab 1 - PAN S2S & Azure ExpressRoute](#Lab-1---PAN-S2S-&-Azure-ExpressRoute)
 * [Lab 2](#Lab-2)
 
 ## Upgrading GNS3 Appliances 
