@@ -3,8 +3,8 @@
 ## Table of contents
 * [Upgrading GNS3 Appliances](#Upgrading-GNS3-Appliances)
 * [GNS3 Simulation Labs](#GNS3-Simulation-Labs)
-* [Lab 1](#Simulation-Lab1-Azure-ExpressRoute)
-* [Lab 2](#Simulation-Lab2-VXLAN-&-DNA-C)
+* [Lab 1](#Lab-1)
+* [Lab 2](#Lab-2)
 
 ## Upgrading GNS3 Appliances 
 
