@@ -3,8 +3,8 @@
 ## Table of contents
 * [Upgrading GNS3 Appliances](#Upgrading-GNS3-Appliances)
 * [GNS3 Simulation Labs](#GNS3-Simulation-Labs)
-* [Simulation Lab 1](#Simulation-Lab1-Azure-ExpressRoute)
-* [Simulation Lab 2](#Simulation-Lab2-VXLAN-&-DNA-C)
+* [Lab 1](#Simulation-Lab1-Azure-ExpressRoute)
+* [Lab 2](#Simulation-Lab2-VXLAN-&-DNA-C)
 
 ## Upgrading GNS3 Appliances 
 
@@ -38,7 +38,7 @@ sudo tar -zxvf /opt/gns3-home2_7.tar
 
 ## GNS3 Simulation Labs
 
-## Simulation Lab 1
+## Lab 1
 
 Abstract: This working lab simulates connecting on-premises networking to Azure ExpressRoute and an S2S VPN via a PAN firewall. It also connects AWS with a S2S VPN via the PAN firewall and a simulated Internet backbone. An external switch running ubridege.exe provides the bridged path allowing a connection to the following external lab systems: Cisco DNA-C appliance, Cisco APIC-EM, Stealwatach, Prime Infrastruture, and Cisco ISE. 
 - Reference - **[Link to Network-Lab.pdf (HTML format)](https://github.com/garrygl/GNS3/blob/20b25805cb25cc5977216e78a9a4a0c04696f3e3/Network-Lab.pdf)
@@ -78,7 +78,7 @@ Webconsole-persistent select live-usb at boot screen
 ```
 # End-of-Lab 1
 
-## Simulation Lab 2 
+## Lab 2 
 
 Abstract: This lab simulates a working CLOS leaf-and-Spine VXLAN MCAST fabric using Cisco CSR1000v appliances as the spines. An external switch simalates a bridge connecting 
 
