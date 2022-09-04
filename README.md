@@ -1,4 +1,4 @@
-# The following Document Contains Information for Ugrading a GNS3 Appliance and Information on GSN3 Lab Projects
+# The following Document Contains Information for Ugrading GNS3 Appliances and Information for Two Lab Projects
 
 ## Procedure for Upgrading a a GNS3 Appliance 
 
