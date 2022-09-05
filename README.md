@@ -1,4 +1,4 @@
-# This Document Contains Information for Ugrading GNS3 Appliances and Two Projects hosted on the GNS3 Platform
+# This Document Contains Information for Ugrading GNS3 Appliances and Two Projects hosted on My GNS3 Platform
 
 ## Table of contents
 * [Upgrading GNS3 Appliances](#Upgrading-GNS3-Appliances)
